@@ -10,10 +10,10 @@ class User {
     @Column()
     date_birth: Date;
     @Column()
-    email: string;
-    @Column()
     telephone_number: string;
-    
+    @Column()
+    email: string;
+
     @Column({name: 'created_at'})
     createdAt: Date;
     @Column({name: 'alterated_at'})

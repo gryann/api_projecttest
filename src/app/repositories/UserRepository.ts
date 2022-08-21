@@ -14,5 +14,7 @@ class UserRepository {
         await this.db.save(data);
         return data;
     }
-    
+
 }
+
+export default UserRepository
