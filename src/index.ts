@@ -1,3 +1,6 @@
+import 'reflect-metadata';
+import './database/connect';
+
 const PORT = process.env.PORT || 3000;
 
 const Koa = require('koa');
