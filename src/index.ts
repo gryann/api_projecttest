@@ -10,6 +10,6 @@ koa
   .use(router.routes())
   .use(router.allowedMethods());
 
-const server = koa.listen(PORT);
+const server = koa.listen(PORT, () => console.log('🔥 Server started at http://localhost:3000'));
 
 module.exports = server;
