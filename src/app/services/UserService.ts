@@ -1,5 +1,6 @@
 import User from "../models/User";
 import UserRepository from "../repositories/UserRepository";
+import UserListViewModel from "../viewmodels/UserListViewModel";
 
 class UserService {
 
@@ -11,7 +12,7 @@ class UserService {
 
     public async create(user: User) {
         try {
-            user.date_birth = new Date(user.date_birth.toString().replace(/-/g, '\/').replace(/T.+/, ''));
+            user.createdAt = new Date;
             return await this.userRepository.create(user);
         } catch (error) {
             throw new Error(error);

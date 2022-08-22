@@ -6,7 +6,7 @@ class User {
     @PrimaryColumn()
     id: string;
     @Column()
-    name: string
+    name: string;
     @Column()
     date_birth: Date;
     @Column()
