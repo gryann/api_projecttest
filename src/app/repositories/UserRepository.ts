@@ -29,6 +29,11 @@ class UserRepository {
         await this.db.update(id, user);
         return true;
     }
+
+    public async delete(id: string): Promise<boolean> {
+        await this.db.delete(id);
+        return true;
+    }
 }
 
 export default UserRepository

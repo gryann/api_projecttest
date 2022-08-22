@@ -30,6 +30,10 @@ class UserService {
         return await this.userRepository.update(id, user);
     }
 
+    public async delete(id: string) {
+        return await this.userRepository.delete(id);
+    }
+
 }
 
 export default UserService;

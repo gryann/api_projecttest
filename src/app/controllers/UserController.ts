@@ -37,8 +37,7 @@ class UserController {
             );
         } catch (err) {
             return (
-                ctx.status = 500,
-                ctx.body = { mensagem: err.message || 'Erro inesperado.' }
+                ctx.status = 500
             )
         }
     }
@@ -59,8 +58,7 @@ class UserController {
             );
         } catch (err) {
             return (
-                ctx.status = 500,
-                ctx.body = { mensagem: err.message || 'Erro inesperado.' }
+                ctx.status = 500
             )
         }
     }
@@ -88,6 +86,21 @@ class UserController {
             )
         }
     }
+
+    public async delete(ctx) {
+        try {
+             const userService = new UserService();
+             await userService.delete(ctx.request.params.id);
+             return (
+                 ctx.status = 204
+             );
+         }
+             catch (err) {
+             return (
+                 ctx.status = 500
+             )
+         }
+     }
 
 
 }
