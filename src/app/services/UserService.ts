@@ -1,6 +1,5 @@
 import User from "../models/User";
 import UserRepository from "../repositories/UserRepository";
-import UserListViewModel from "../viewmodels/UserListViewModel";
 
 class UserService {
 
@@ -26,6 +25,11 @@ class UserService {
     public async getById(userId: string) {
         return await this.userRepository.findById(userId);
     }
+
+    public async update(id: string, user: User) {
+        return await this.userRepository.update(id, user);
+    }
+
 }
 
 export default UserService;

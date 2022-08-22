@@ -24,6 +24,11 @@ class UserRepository {
     public async findById(id: string): Promise<User> {
         return await this.db.findOne({id: id});
     }
+
+    public async update(id: string, user: User): Promise<boolean> {
+        await this.db.update(id, user);
+        return true;
+    }
 }
 
 export default UserRepository

@@ -47,6 +47,12 @@ class UserController {
         try {
             const userService = new UserService();
             const user = await userService.getById(ctx.params.id);
+            if (!user) {
+                return (
+                    ctx.status = 404,
+                    ctx.body = { mensagem: 'User not found!' }
+                )
+            }
             return (
                 ctx.body = user,
                 ctx.status = 200
@@ -58,6 +64,31 @@ class UserController {
             )
         }
     }
+
+    public async update(ctx) {
+       try {
+            const userReporsitory = new UserRepository();
+            const userExist = await userReporsitory.find({ id: ctx.request.params.id });
+            if (!userExist.length) {
+                return (
+                    ctx.status = 404,
+                    ctx.body = { mensagem: 'User not found!' }
+                )
+            }
+            
+            const userService = new UserService();
+            await userService.update(ctx.request.params.id, ctx.request.body);
+            return (
+                ctx.status = 204
+            );
+        }
+            catch (err) {
+            return (
+                ctx.status = 500
+            )
+        }
+    }
+
 
 }
 
