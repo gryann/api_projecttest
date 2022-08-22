@@ -15,12 +15,15 @@ class UserRepository {
         return data;
     }
 
-    public async getByParams(params: Record<string, any>): Promise<User[]> {
+    public async find(params: Record<string, any>): Promise<User[]> {
         const data = await this.db.find(params);
 
         return data;
     }
 
+    public async findById(id: string): Promise<User> {
+        return await this.db.findOne({id: id});
+    }
 }
 
 export default UserRepository

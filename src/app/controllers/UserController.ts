@@ -6,7 +6,7 @@ class UserController {
     public async create(ctx) {
         try {
             const userReporsitory = new UserRepository();
-            const userExist = await userReporsitory.getByParams({ email: ctx.request.body.email });
+            const userExist = await userReporsitory.find({ email: ctx.request.body.email });
             if (userExist.length) {
                 return (
                     ctx.status = 400,
@@ -23,6 +23,38 @@ class UserController {
         } catch (err) {
             return (
                 ctx.status = 500
+            )
+        }
+    }
+
+    public async getAll(ctx) {
+        try {
+            const userService = new UserService();
+            const users = await userService.getAll();
+            return (
+                ctx.body = users,
+                ctx.status = 200
+            );
+        } catch (err) {
+            return (
+                ctx.status = 500,
+                ctx.body = { mensagem: err.message || 'Erro inesperado.' }
+            )
+        }
+    }
+
+    public async getById(ctx) {
+        try {
+            const userService = new UserService();
+            const user = await userService.getById(ctx.params.id);
+            return (
+                ctx.body = user,
+                ctx.status = 200
+            );
+        } catch (err) {
+            return (
+                ctx.status = 500,
+                ctx.body = { mensagem: err.message || 'Erro inesperado.' }
             )
         }
     }

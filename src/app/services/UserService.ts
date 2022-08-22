@@ -18,6 +18,14 @@ class UserService {
             throw new Error(error);
         }
     }
+
+    public async getAll() {
+        return await this.userRepository.find({});
+    }
+
+    public async getById(userId: string) {
+        return await this.userRepository.findById(userId);
+    }
 }
 
 export default UserService;
