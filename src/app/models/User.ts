@@ -16,12 +16,12 @@ class User {
 
     @Column({name: 'created_at'})
     createdAt: Date;
-    @Column({name: 'alterated_at'})
-    alteratedAt: Date;
+    @Column({name: 'updated_at'})
+    updatedAt: Date;
 
     @BeforeUpdate()
     updateUser() {
-        this.alteratedAt = new Date();
+        this.updatedAt = new Date();
     }
 
     constructor() {
