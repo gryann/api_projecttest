@@ -27,6 +27,7 @@ class UserService {
     }
 
     public async update(id: string, user: User) {
+        user.updatedAt = new Date;
         return await this.userRepository.update(id, user);
     }
 

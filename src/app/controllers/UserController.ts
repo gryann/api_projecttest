@@ -1,7 +1,6 @@
 import UserService from "../services/UserService";
 import UserRepository from "../repositories/UserRepository";
 
-
 class UserController {
     public async create(ctx) {
         try {
