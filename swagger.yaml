@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: API CRUD Usuário
+  description: API projeto de teste para DevOZ
+  termsOfService: termo
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: API test
+paths:
+  /users:
+    post:
+      description: API criação de Usuários
+      tags:
+        - Usuários
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                date_birth:
+                  type: string
+                  pattern: yyyy-MM-dd
+                telephone_number:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  date_birth:
+                    type: string
+                    pattern: yyyy-MM-dd
+                  telephone_number:
+                    type: string
+                  email:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+        '400':
+          description: BadRequest
+        '500':
+          description: Internal Server Error
+    get:
+      description: API listagem de Usuários
+      tags:
+        - Usuários
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    date_birth:
+                      type: string
+                      pattern: yyyy-MM-dd
+                    telephone_number:
+                      type: string
+                    email:
+                      type: string
+                    createdAt:
+                      type: string
+                    updatedAt:
+                      type: string
+        '500':
+          description: Internal Server Error
+  /users/{id}:
+    get:
+      description: API busca de Usuário por Id
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  date_birth:
+                    type: string
+                    pattern: yyyy-MM-dd
+                  telephone_number:
+                    type: string
+                  email:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+        '404':
+          description: User Not Found
+        '500':
+          description: Internal Server Error
+    delete:
+      description: API exclusão de Usuário por Id
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      responses:
+        '204':
+          description: Success
+        '500':
+          description: Internal Server Error
+    patch:
+      description: API atualizar dados de Usuário
+      tags:
+        - Usuários
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                date_birth:
+                  type: string
+                  pattern: yyyy-MM-dd
+                telephone_number:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '204':
+          description: Success
+        '404':
+          description: User Not Found
+        '500':
+          description: Internal Server Error
